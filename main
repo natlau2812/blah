@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Batch 28 — small-batch brownies and mini chocolate chips, available for weekly pre-order and self-collection."
+  >
+
+  <title>Batch 28 | Small Batch Treats</title>
+
+  <style>
+    :root {
+      --cream: #fff8ed;
+      --paper: #fffdf8;
+      --brown: #3c2417;
+      --caramel: #c96f38;
+      --peach: #f6c99f;
+      --pink: #f4a7a4;
+      --green: #6c8b62;
+      --muted: #75645a;
+      --white: #ffffff;
+      --line: rgba(60, 36, 23, 0.10);
+      --shadow: 0 14px 40px rgba(60, 36, 23, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      color: var(--brown);
+      background: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--caramel);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .announcement {
+      padding: 9px 16px;
+      color: white;
+      background: var(--brown);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 248, 237, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: var(--caramel);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover {
+      color: var(--caramel);
+    }
+
+    .cart-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: var(--brown);
+      color: white;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .cart-button:hover {
+      background: var(--caramel);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 90px;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero::before {
+      top: -140px;
+      left: -120px;
+      background: var(--peach);
+      opacity: 0.5;
+    }
+
+    .hero::after {
+      right: -130px;
+      bottom: -150px;
+      background: var(--pink);
+      opacity: 0.3;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero h1 {
+      max-width: 700px;
+      margin-bottom: 22px;
+      font-size: clamp(3.1rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .hero h1 span {
+      color: var(--caramel);
+      font-style: italic;
+    }
+
+    .hero-copy p {
+      max-width: 580px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 22px;
+      border: 2px solid var(--brown);
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      cursor: pointer;
+      font-weight: 800;
+      transition: 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--caramel);
+      border-color: var(--caramel);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--brown);
+    }
+
+    .button-secondary:hover {
+      color: white;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 480px;
+      display: grid;
+      place-items: center;
+      border-radius: 48% 52% 55% 45% / 52% 44% 56% 48%;
+      background: linear-gradient(145deg, #f6c99f, #eaa96e);
+      box-shadow: var(--shadow);
+    }
+
+    .brownie-art {
+      width: 270px;
+      height: 270px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 25% 25%, #5d3223 0 4%, transparent 5%),
+        radial-gradient(circle at 72% 28%, #5d3223 0 5%, transparent 6%),
+        radial-gradient(circle at 40% 70%, #5d3223 0 5%, transparent 6%),
+        radial-gradient(circle at 78% 72%, #5d3223 0 4%, transparent 5%),
+        linear-gradient(135deg, #3d2015, #743d25);
+      box-shadow: 0 28px 45px rgba(60, 36, 23, 0.25);
+      transform: rotate(-6deg);
+    }
+
+    .hero-chip {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fff1d4 0 4%, transparent 5%),
+        radial-gradient(circle at 65% 28%, #fff1d4 0 4%, transparent 5%),
+        radial-gradient(circle at 42% 65%, #fff1d4 0 4%, transparent 5%),
+        linear-gradient(135deg, #6b351f, #a35d32);
+      box-shadow: 0 18px 25px rgba(60, 36, 23, 0.2);
+    }
+
+    .chip-one {
+      top: 55px;
+      left: 45px;
+    }
+
+    .chip-two {
+      right: 55px;
+      bottom: 60px;
+      transform: rotate(20deg);
+    }
+
+    .hero-note {
+      position: absolute;
+      right: -18px;
+      bottom: 105px;
+      width: 155px;
+      padding: 15px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-align: center;
+      transform: rotate(-4deg);
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .products {
+      background: var(--paper);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 8px 25px rgba(60, 36, 23, 0.06);
+    }
+
+    .product-image {
+      min-height: 245px;
+      display: grid;
+      place-items: center;
+    }
+
+    .product-image.chips {
+      background: #f5d7b7;
+    }
+
+    .product-image.brownies {
+      background: #f3c8c3;
+    }
+
+    .bottle {
+      width: 130px;
+      height: 175px;
+      position: relative;
+      border-radius: 18px 18px 30px 30px;
+      background: rgba(255,255,255,0.45);
+      border: 4px solid rgba(255,255,255,0.7);
+      box-shadow: 0 18px 30px rgba(60,36,23,0.18);
+      backdrop-filter: blur(4px);
+    }
+
+    .bottle::before {
+      position: absolute;
+      top: -30px;
+      left: 26px;
+      width: 70px;
+      height: 35px;
+      border-radius: 10px 10px 4px 4px;
+      background: #d49a54;
+      content: "";
+    }
+
+    .chips-inside {
+      position: absolute;
+      inset: 40px 18px 18px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 15% 15%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 40% 22%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 72% 18%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 28% 46%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 60% 45%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 82% 55%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 45% 75%, #4b291b 0 5%, transparent 6%),
+        radial-gradient(circle at 78% 82%, #4b291b 0 5%, transparent 6%),
+        #e8b36f;
+    }
+
+    .bottle.big {
+      transform: scale(1.08);
+    }
+
+    .brownie-stack {
+      position: relative;
+      width: 180px;
+      height: 150px;
+    }
+
+    .brownie-piece {
+      position: absolute;
+      width: 130px;
+      height: 95px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 25% 30%, #9b5737 0 4%, transparent 5%),
+        radial-gradient(circle at 70% 45%, #9b5737 0 4%, transparent 5%),
+        linear-gradient(135deg, #3d2015, #713b25);
+      box-shadow: 0 15px 20px rgba(60,36,23,0.22);
+    }
+
+    .piece-one {
+      left: 8px;
+      top: 35px;
+      transform: rotate(-7deg);
+    }
+
+    .piece-two {
+      left: 45px;
+      top: 5px;
+      transform: rotate(7deg);
+    }
+
+    .piece-three {
+      right: 0;
+      bottom: 0;
+      transform: rotate(12deg);
+    }
+
+    .product-content {
+      padding: 25px;
+    }
+
+    .product-content h3 {
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+    }
+
+    .product-content > p {
+      min-height: 50px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .variants {
+      display: grid;
+      gap: 9px;
+    }
+
+    .variant-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--cream);
+    }
+
+    .variant-info strong {
+      display: block;
+      font-size: 0.93rem;
+    }
+
+    .variant-info span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .variant-price {
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .add-button {
+      margin-left: auto;
+      padding: 8px 13px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .add-button:hover {
+      background: var(--caramel);
+    }
+
+    .preorder {
+      background: var(--brown);
+      color: white;
+    }
+
+    .preorder-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .preorder h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.05;
+    }
+
+    .preorder p {
+      color: rgba(255,255,255,0.75);
+    }
+
+    .rule-card {
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .rule-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--peach);
+    }
+
+    .cart-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+    }
+
+    .cart-drawer.open {
+      display: block;
+    }
+
+    .cart-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,18,12,0.55);
+    }
+
+    .cart-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(480px, 100%);
+      height: 100%;
+      overflow-y: auto;
+      padding: 28px;
+      background: var(--paper);
+      box-shadow: -15px 0 40px rgba(0,0,0,0.15);
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .cart-header h2 {
+      font-size: 2rem;
+    }
+
+    .close-button {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--cream);
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item strong {
+      display: block;
+    }
+
+    .cart-item small {
+      color: var(--muted);
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quantity-controls button {
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--brown);
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px 0;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .checkout {
+      display: none;
+      padding: 28px 0 0;
+    }
+
+    .checkout.show {
+      display: block;
+    }
+
+    .checkout h3 {
+      margin-bottom: 18px;
+      font-size: 1.8rem;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid rgba(60,36,23,0.18);
+      border-radius: 12px;
+      outline: none;
+      background: white;
+      color: var(--brown);
+    }
+
+    .field textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .collection-options {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .collection-option {
+      position: relative;
+    }
+
+    .collection-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .collection-label {
+      display: block;
+      padding: 15px;
+      border: 2px solid var(--line);
+      border-radius: 15px;
+      cursor: pointer;
+      background: white;
+    }
+
+    .collection-label strong {
+      display: block;
+    }
+
+    .collection-label span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .collection-option input:checked + .collection-label {
+      border-color: var(--caramel);
+      background: #fff3e6;
+    }
+
+    .paynow {
+      display: none;
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 20px;
+      background: var(--peach);
+      text-align: center;
+    }
+
+    .paynow.show {
+      display: block;
+    }
+
+    .paynow h3 {
+      margin-bottom: 6px;
+    }
+
+    .paynow-total {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .qr-placeholder {
+      width: 210px;
+      height: 210px;
+      margin: 15px auto;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 14px;
+      background: white;
+      border: 4px solid white;
+    }
+
+    .qr-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .paynow-note {
+      margin-bottom: 15px;
+      font-size: 0.84rem;
+    }
+
+    .confirmation {
+      display: none;
+      padding: 35px 0;
+      text-align: center;
+    }
+
+    .confirmation.show {
+      display: block;
+    }
+
+    .confirmation-icon {
+      font-size: 4rem;
+      margin-bottom: 12px;
+    }
+
+    .confirmation h2 {
+      margin-bottom: 12px;
+      font-size: 2.5rem;
+    }
+
+    .confirmation-card {
+      max-width: 520px;
+      margin: 25px auto;
+      padding: 22px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .confirmation-card div + div {
+      margin-top: 9px;
+    }
+
+    .status-note {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 12px;
+      background: #fff3e6;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      max-width: 330px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: var(--green);
+      color: white;
+      box-shadow: var(--shadow);
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(15px);
+      transition: 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .empty-cart {
+      padding: 30px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      padding: 55px 0 30px;
+      color: white;
+      background: #29170f;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 35px;
+    }
+
+    footer p {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .copyright {
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .preorder-box,
+      .product-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-copy p {
+        margin-inline: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-art {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding: 55px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+
+      .hero-art {
+        min-height: 330px;
+      }
+
+      .brownie-art {
+        width: 210px;
+        height: 210px;
+      }
+
+      .hero-note {
+        right: 5px;
+        bottom: 75px;
+        width: 130px;
+        font-size: 0.75rem;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .cart-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement" id="announcement">
+    Pre-orders close every Thursday at 11:59 PM for that Sunday's collection.
+  </div>
+
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">
+        Batch <span>28</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#collection">Collection</a></li>
+      </ul>
+
+      <button class="cart-button" type="button" onclick="openCart()">
+        Cart (<span id="cartCount">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+          <span class="eyebrow">Small batch • Pre-order only</span>
+
+          <h1>
+            Made in batches.
+            <span>Made to crave.</span>
+          </h1>
+
+          <p>
+            Fudgy brownies and tiny chocolatey treats, made fresh in small
+            batches for your Sunday collection.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button" href="#menu">Shop the menu</a>
+            <a class="button button-secondary" href="#how-it-works">
+              How it works
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Brownie illustration">
+          <div class="brownie-art"></div>
+          <div class="hero-chip chip-one"></div>
+          <div class="hero-chip chip-two"></div>
+          <div class="hero-note">
+            Baked fresh for your collection 🍫
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MENU -->
+    <section class="section products" id="menu">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">The menu</span>
+
+          <h2>
+            Pick your batch.
+          </h2>
+
+          <p>
+            Everything is made in small batches and available for pre-order.
+          </p>
+        </div>
+
+
+        <div class="product-grid">
+
+          <!-- CHOCOLATE CHIPS -->
+          <article class="product-card">
+
+            <div class="product-image chips">
+
+              <div class="bottle">
+                <div class="chips-inside"></div>
+              </div>
+
+            </div>
+
+            <div class="product-content">
+
+              <h3>Mini Chocolate Chips</h3>
+
+              <p>
+                Tiny chocolate chips packed into cute little bottles —
+                perfect for snacking, baking or adding a little chocolate
+                to everything.
+              </p>
+
+              <div class="variants">
+
+                <div class="variant-row">
+
+                  <div class="variant-info">
+                    <strong>Small Bottle</strong>
+                    <span>15–16 pcs</span>
+                  </div>
+
+                  <span class="variant-price">$7.90</span>
+
+                  <button
+                    class="add-button"
+                    type="button"
+                    onclick="addToCart('CHIP-S', 'Mini Chocolate Chips — Small Bottle', 7.90)"
+                  >
+                    Add
+                  </button>
+
+                </div>
+
+
+                <div class="variant-row">
+
+                  <div class="variant-info">
+                    <strong>Big Bottle</strong>
+                    <span>26 pcs</span>
+                  </div>
+
+                  <span class="variant-price">$12.90</span>
+
+                  <button
+                    class="add-button"
+                    type="button"
+                    onclick="addToCart('CHIP-B', 'Mini Chocolate Chips — Big Bottle', 12.90)"
+                  >
+                    Add
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- BROWNIES -->
+          <article class="product-card">
+
+            <div class="product-image brownies">
+
+              <div class="brownie-stack">
+                <div class="brownie-piece piece-one"></div>
+                <div class="brownie-piece piece-two"></div>
+                <div class="brownie-piece piece-three"></div>
+              </div>
+
+            </div>
+
+            <div class="product-content">
+
+              <h3>Fudgy Brownies</h3>
+
+              <p>
+                Rich, chocolatey and fudgy. Choose the box size that suits
+                your craving.
+              </p>
+
+              <div class="variants">
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>6 pcs</strong>
+                  </div>
+                  <span class="variant-price">$12.90</span>
+                  <button class="add-button" onclick="addToCart('BR-6','Fudgy Brownies — 6 pcs',12.90)">
+                    Add
+                  </button>
+                </div>
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>9 pcs</strong>
+                  </div>
+                  <span class="variant-price">$18.90</span>
+                  <button class="add-button" onclick="addToCart('BR-9','Fudgy Brownies — 9 pcs',18.90)">
+                    Add
+                  </button>
+                </div>
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>12 pcs</strong>
+                  </div>
+                  <span class="variant-price">$24.90</span>
+                  <button class="add-button" onclick="addToCart('BR-12','Fudgy Brownies — 12 pcs',24.90)">
+                    Add
+                  </button>
+                </div>
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>15 pcs</strong>
+                  </div>
+                  <span class="variant-price">$30.90</span>
+                  <button class="add-button" onclick="addToCart('BR-15','Fudgy Brownies — 15 pcs',30.90)">
+                    Add
+                  </button>
+                </div>
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>18 pcs</strong>
+                  </div>
+                  <span class="variant-price">$36.90</span>
+                  <button class="add-button" onclick="addToCart('BR-18','Fudgy Brownies — 18 pcs',36.90)">
+                    Add
+                  </button>
+                </div>
+
+                <div class="variant-row">
+                  <div class="variant-info">
+                    <strong>5 × 5 Slab</strong>
+                    <span>25 brownie pieces</span>
+                  </div>
+                  <span class="variant-price">$32.90</span>
+                  <button class="add-button" onclick="addToCart('BR-55','Fudgy Brownies — 5 × 5 Slab',32.90)">
+                    Add
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="section preorder" id="how-it-works">
+
+      <div class="container preorder-box">
+
+        <div>
+          <span class="eyebrow">How Batch 28 works</span>
+
+          <h2>
+            Pre-order now.
+            Collect on Sunday.
+          </h2>
+
+          <p>
+            You can order weeks ahead. Each Sunday has its own Thursday
+            pre-order deadline.
+          </p>
+        </div>
+
+        <div class="rule-card">
+
+          <strong>🍪 Our weekly rule</strong>
+
+          <p>
+            Orders for a Sunday collection close at
+            <b>11:59 PM on the Thursday before.</b>
+          </p>
+
+          <br>
+
+          <p>
+            Once your payment is confirmed, your order is confirmed for
+            that Sunday's collection.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COLLECTION -->
+    <section class="section" id="collection">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">Self-collection</span>
+
+          <h2>
+            Pick the Sunday that works for you.
+          </h2>
+
+          <p>
+            Available collection dates are loaded from our current
+            Batch 28 schedule.
+          </p>
+
+        </div>
+
+        <div
+          id="collectionPreview"
+          style="max-width:700px;margin:auto;"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- CART DRAWER -->
+
+  <div class="cart-drawer" id="cartDrawer">
+
+    <div
+      class="cart-overlay"
+      onclick="closeCart()"
+    ></div>
+
+    <aside class="cart-panel">
+
+      <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button
+          class="close-button"
+          onclick="closeCart()"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div id="cartItems"></div>
+
+
+      <div
+        class="empty-cart"
+        id="emptyCart"
+      >
+        Your cart is empty 🍪
+      </div>
+
+
+      <div
+        id="cartSummary"
+        class="hidden"
+      >
+
+        <div class="cart-total">
+
+          <span>Total</span>
+
+          <span>
+            $<span id="cartTotal">0.00</span>
+          </span>
+
+        </div>
+
+        <button
+          class="button"
+          style="width:100%;"
+          onclick="showCheckout()"
+          type="button"
+        >
+          Checkout
+        </button>
+
+      </div>
+
+
+      <!-- CHECKOUT -->
+
+      <div
+        class="checkout"
+        id="checkout"
+      >
+
+        <h3>Your details</h3>
+
+
+        <div class="field">
+
+          <label for="customerName">
+            Name *
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            placeholder="Your name"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="whatsapp">
+            WhatsApp number *
+          </label>
+
+          <input
+            id="whatsapp"
+            type="tel"
+            placeholder="e.g. 91234567"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Collection Sunday *
+          </label>
+
+          <div
+            class="collection-options"
+            id="collectionOptions"
+          ></div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="notes">
+            Order notes
+          </label>
+
+          <textarea
+            id="notes"
+            placeholder="Any notes for Batch 28?"
+          ></textarea>
+
+        </div>
+
+
+        <button
+          class="button"
+          style="width:100%;"
+          onclick="createOrder()"
+          type="button"
+        >
+          Place Order & PayNow
+        </button>
+
+
+        <!-- PAYNOW -->
+
+        <div
+          class="paynow"
+          id="paynow"
+        >
+
+          <h3>
+            Order <span id="paynowOrderId"></span>
+          </h3>
+
+          <div class="paynow-total">
+            Pay $<span id="paynowAmount"></span>
+          </div>
+
+          <p class="paynow-note">
+            Scan the QR code below with your banking app.
+            Please pay the exact amount shown.
+          </p>
+
+
+          <div class="qr-placeholder">
+
+            <img
+              id="paynowQr"
+              src="YOUR_PAYNOW_QR_IMAGE_HERE"
+              alt="Batch 28 PayNow QR"
+            >
+
+          </div>
+
+
+          <p class="paynow-note">
+            After completing the transfer, click the button below.
+            Your payment will remain <b>PENDING</b> until Batch 28
+            verifies receipt.
+          </p>
+
+
+          <button
+            class="button"
+            style="width:100%;"
+            onclick="markCustomerPaid()"
+            type="button"
+          >
+            I've Made Payment
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONFIRMATION -->
+
+      <div
+        class="confirmation"
+        id="confirmation"
+      >
+
+        <div class="confirmation-icon">
+          🍪
+        </div>
+
+        <h2>
+          Order received!
+        </h2>
+
+        <p>
+          Thank you for ordering from Batch 28.
+        </p>
+
+
+        <div
+          class="confirmation-card"
+          id="confirmationCard"
+        ></div>
+
+
+        <div class="status-note">
+          Your payment is currently being verified.
+          Your order is only confirmed once Batch 28
+          has received your payment.
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h2>Batch 28</h2>
+
+          <p>
+            Small-batch treats made fresh for your Sunday collection.
+          </p>
+        </div>
+
+        <div>
+          <h3>Pre-order</h3>
+
+          <p>
+            Orders for each Sunday close Thursday at 11:59 PM.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 Batch 28. Made in small batches.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /*
+      ============================================================
+      BATCH 28 CONFIGURATION
+      ============================================================
+
+      Replace this with your Google Apps Script Web App URL
+      AFTER we create the Apps Script.
+
+      Example:
+
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/XXXXX/exec";
+    */
+
+    const GOOGLE_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbxO7bQqSbh-H0ucK0AMaI5ZmUaHDPHRm3mqN6BVMw1LCRJ_00705swilLbuvaBZ2byP/exec";
+
+
+    /*
+      Static PayNow QR.
+
+      Replace:
+
+     "C:\Users\65906\OneDrive\Desktop\Batch 28!!\personal paynow.jpg"
+
+      with your QR image filename or hosted image URL.
+    */
+
+
+    let cart = [];
+
+    let collections = [];
+
+    let currentOrder = null;
+
+
+    /*
+      ============================================================
+      INITIALISE
+      ============================================================
+    */
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      loadCollections();
+
+      renderCart();
+
+    });
+
+
+    /*
+      ============================================================
+      PRODUCT CART
+      ============================================================
+    */
+
+    function addToCart(id, name, price) {
+
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+
+        existing.quantity += 1;
+
+      } else {
+
+        cart.push({
+          id,
+          name,
+          price,
+          quantity: 1
+        });
+
+      }
+
+      renderCart();
+
+      showToast(
+        `${name} added to cart 🍪`
+      );
+
+    }
+
+
+    function changeQuantity(id, change) {
+
+      const item = cart.find(
+        product => product.id === id
+      );
+
+      if (!item) return;
+
+      item.quantity += change;
+
+      if (item.quantity <= 0) {
+
+        cart = cart.filter(
+          product => product.id !== id
+        );
+
+      }
+
+      renderCart();
+
+    }
+
+
+    function getCartTotal() {
+
+      return cart.reduce(
+        (total, item) =>
+          total + item.price * item.quantity,
+        0
+      );
+
+    }
+
+
+    function renderCart() {
+
+      const cartItems =
+        document.getElementById("cartItems");
+
+      const emptyCart =
+        document.getElementById("emptyCart");
+
+      const cartSummary =
+        document.getElementById("cartSummary");
+
+      const cartCount =
+        document.getElementById("cartCount");
+
+      const cartTotal =
+        document.getElementById("cartTotal");
+
+
+      const itemCount =
+        cart.reduce(
+          (sum, item) =>
+            sum + item.quantity,
+          0
+        );
+
+
+      cartCount.textContent = itemCount;
+
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML = "";
+
+        emptyCart.classList.remove(
+          "hidden"
+        );
+
+        cartSummary.classList.add(
+          "hidden"
+        );
+
+        return;
+
+      }
+
+
+      emptyCart.classList.add(
+        "hidden"
+      );
+
+      cartSummary.classList.remove(
+        "hidden"
+      );
+
+
+      cartItems.innerHTML =
+        cart.map(item => `
+
+          <div class="cart-item">
+
+            <div>
+
+              <strong>
+                ${escapeHtml(item.name)}
+              </strong>
+
+              <small>
+                $${item.price.toFixed(2)} each
+              </small>
+
+              <div class="quantity-controls">
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${item.id}', -1)"
+                >
+                  −
+                </button>
+
+                <strong>
+                  ${item.quantity}
+                </strong>
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${item.id}', 1)"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+            <strong>
+              $${(
+                item.price * item.quantity
+              ).toFixed(2)}
+            </strong>
+
+          </div>
+
+        `).join("");
+
+
+      cartTotal.textContent =
+        getCartTotal().toFixed(2);
+
+    }
+
+
+    /*
+      ============================================================
+      CART DRAWER
+      ============================================================
+    */
+
+    function openCart() {
+
+      document
+        .getElementById("cartDrawer")
+        .classList.add("open");
+
+    }
+
+
+    function closeCart() {
+
+      document
+        .getElementById("cartDrawer")
+        .classList.remove("open");
+
+    }
+
+
+    /*
+      ============================================================
+      COLLECTIONS
+      ============================================================
+    */
+
+    function loadCollections() {
+
+      /*
+        Temporary demo collections.
+
+        Once Google Apps Script is connected,
+        these will be replaced with the values from
+        your COLLECTIONS tab.
+      */
+
+      const today =
+        new Date();
+
+      collections = [];
+
+      for (let i = 0; i < 6; i++) {
+
+        const sunday =
+          getNextSunday(
+            today,
+            i
+          );
+
+        collections.push({
+
+          id: `C${String(i + 1).padStart(3, "0")}`,
+
+          date: formatDateForInput(
+            sunday
+          ),
+
+          displayDate:
+            formatFriendlyDate(
+              sunday
+            ),
+
+          time:
+            "2:00 PM – 5:00 PM",
+
+          address:
+            "Collection address will be provided",
+
+          status:
+            "OPEN"
+
+        });
+
+      }
+
+      /*
+        If your Google Apps Script endpoint
+        is available, attempt to fetch
+        real collection information.
+      */
+
+      if (
+        GOOGLE_SCRIPT_URL &&
+        !GOOGLE_SCRIPT_URL.includes(
+          "YOUR_GOOGLE"
+        )
+      ) {
+
+        fetch(
+          GOOGLE_SCRIPT_URL +
+          "?action=getCollections"
+        )
+
+        .then(response =>
+          response.json()
+        )
+
+        .then(data => {
+
+          if (
+            data &&
+            Array.isArray(data.collections)
+          ) {
+
+            collections =
+              data.collections;
+
+          }
+
+          renderCollectionOptions();
+          renderCollectionPreview();
+
+        })
+
+        .catch(() => {
+
+          renderCollectionOptions();
+          renderCollectionPreview();
+
+        });
+
+      } else {
+
+        renderCollectionOptions();
+        renderCollectionPreview();
+
+      }
+
+    }
+
+
+    function getNextSunday(
+      date,
+      weeksAhead
+    ) {
+
+      const result =
+        new Date(date);
+
+      const day =
+        result.getDay();
+
+      const daysUntilSunday =
+        (7 - day) % 7;
+
+      result.setDate(
+        result.getDate() +
+        daysUntilSunday +
+        (weeksAhead * 7)
+      );
+
+      /*
+        If today is Sunday and the current
+        week's deadline has already passed,
+        the first available date should be
+        next Sunday.
+
+        Sunday itself is already past the
+        Thursday cutoff.
+      */
+
+      if (
+        weeksAhead === 0 &&
+        day === 0
+      ) {
+
+        result.setDate(
+          result.getDate() + 7
+        );
+
+      }
+
+      return result;
+
+    }
+
+
+    function isCollectionOpen(
+      collectionDate
+    ) {
+
+      const date =
+        new Date(
+          collectionDate +
+          "T23:59:59"
+        );
+
+      /*
+        Find the Thursday immediately
+        before the Sunday.
+      */
+
+      const cutoff =
+        new Date(date);
+
+      cutoff.setDate(
+        cutoff.getDate() - 3
+      );
+
+      cutoff.setHours(
+        23,
+        59,
+        59,
+        999
+      );
+
+      return new Date() <= cutoff;
+
+    }
+
+
+    function renderCollectionOptions() {
+
+      const container =
+        document.getElementById(
+          "collectionOptions"
+        );
+
+      if (!container) return;
+
+
+      const openCollections =
+        collections.filter(
+          collection =>
+            collection.status !== "CLOSED" &&
+            isCollectionOpen(
+              collection.date
+            )
+        );
+
+
+      if (
+        openCollections.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="status-note">
+            No upcoming collection dates
+            are currently available.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        openCollections
+          .map((collection, index) => `
+
+            <div class="collection-option">
+
+              <input
+                type="radio"
+                name="collection"
+                id="collection-${collection.id}"
+                value="${collection.id}"
+                ${index === 0 ? "checked" : ""}
+              >
+
+              <label
+                class="collection-label"
+                for="collection-${collection.id}"
+              >
+
+                <strong>
+                  ${escapeHtml(
+                    collection.displayDate ||
+                    formatFriendlyDate(
+                      new Date(
+                        collection.date +
+                        "T12:00:00"
+                      )
+                    )
+                  )}
+                </strong>
+
+                <span>
+                  ${escapeHtml(
+                    collection.time
+                  )}
+                </span>
+
+                <span>
+                  Order by Thursday
+                  11:59 PM
+                </span>
+
+              </label>
+
+            </div>
+
+          `)
+          .join("");
+
+    }
+
+
+    function renderCollectionPreview() {
+
+      const container =
+        document.getElementById(
+          "collectionPreview"
+        );
+
+      if (!container) return;
+
+
+      const openCollections =
+        collections.filter(
+          collection =>
+            collection.status !== "CLOSED" &&
+            isCollectionOpen(
+              collection.date
+            )
+        );
+
+
+      container.innerHTML =
+        openCollections
+          .map(collection => `
+
+            <div
+              style="
+                padding:20px;
+                margin-bottom:12px;
+                border-radius:18px;
+                background:white;
+                box-shadow:0 8px 25px rgba(60,36,23,.07);
+              "
+            >
+
+              <strong>
+                ${escapeHtml(
+                  collection.displayDate ||
+                  formatFriendlyDate(
+                    new Date(
+                      collection.date +
+                      "T12:00:00"
+                    )
+                  )
+                )}
+              </strong>
+
+              <div
+                style="
+                  color:#75645a;
+                  font-size:.9rem;
+                  margin-top:4px;
+                "
+              >
+                ${escapeHtml(
+                  collection.time
+                )}
+              </div>
+
+              <div
+                style="
+                  color:#75645a;
+                  font-size:.85rem;
+                  margin-top:5px;
+                "
+              >
+                Pre-orders close Thursday
+                at 11:59 PM
+              </div>
+
+            </div>
+
+          `)
+          .join("");
+
+    }
+
+
+    /*
+      ============================================================
+      CHECKOUT
+      ============================================================
+    */
+
+    function showCheckout() {
+
+      if (cart.length === 0) {
+
+        showToast(
+          "Your cart is empty."
+        );
+
+        return;
+
+      }
+
+
+      document
+        .getElementById("checkout")
+        .classList.add("show");
+
+
+      document
+        .getElementById("checkout")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    /*
+      ============================================================
+      CREATE ORDER
+      ============================================================
+    */
+
+    async function createOrder() {
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+      const whatsapp =
+        document
+          .getElementById("whatsapp")
+          .value
+          .trim();
+
+      const notes =
+        document
+          .getElementById("notes")
+          .value
+          .trim();
+
+
+      const selected =
+        document.querySelector(
+          'input[name="collection"]:checked'
+        );
+
+
+      if (!name) {
+
+        showToast(
+          "Please enter your name."
+        );
+
+        return;
+
+      }
+
+
+      if (!whatsapp) {
+
+        showToast(
+          "Please enter your WhatsApp number."
+        );
+
+        return;
+
+      }
+
+
+      if (!selected) {
+
+        showToast(
+          "Please select a collection Sunday."
+        );
+
+        return;
+
+      }
+
+
+      const collection =
+        collections.find(
+          item =>
+            item.id === selected.value
+        );
+
+
+      if (!collection) {
+
+        showToast(
+          "Please select a valid collection date."
+        );
+
+        return;
+
+      }
+
+
+      if (
+        !isCollectionOpen(
+          collection.date
+        )
+      ) {
+
+        showToast(
+          "Sorry, that collection date has closed."
+        );
+
+        loadCollections();
+
+        return;
+
+      }
+
+
+      const orderId =
+        generateOrderId();
+
+
+      const total =
+        getCartTotal();
+
+
+      const items =
+        cart.map(item => ({
+
+          productId:
+            item.id,
+
+          name:
+            item.name,
+
+          quantity:
+            item.quantity,
+
+          price:
+            item.price,
+
+          lineTotal:
+            Number(
+              (
+                item.price *
+                item.quantity
+              ).toFixed(2)
+            )
+
+        }));
+
+
+      currentOrder = {
+
+        orderId,
+
+        timestamp:
+          new Date().toISOString(),
+
+        customerName:
+          name,
+
+        whatsapp:
+          whatsapp,
+
+        collectionId:
+          collection.id,
+
+        collectionDate:
+          collection.date,
+
+        collectionTime:
+          collection.time,
+
+        collectionAddress:
+          collection.address,
+
+        items,
+
+        subtotal:
+          total,
+
+        total,
+
+        paymentStatus:
+          "PENDING",
+
+        orderStatus:
+          "AWAITING PAYMENT",
+
+        notes
+
+      };
+
+
+      /*
+        Send to Google Apps Script.
+      */
+
+      if (
+        GOOGLE_SCRIPT_URL &&
+        !GOOGLE_SCRIPT_URL.includes(
+          "YOUR_GOOGLE"
+        )
+      ) {
+
+        try {
+
+          await fetch(
+            GOOGLE_SCRIPT_URL,
+            {
+
+              method: "POST",
+
+              mode: "no-cors",
+
+              headers: {
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+              },
+
+              body:
+                JSON.stringify(
+                  currentOrder
+                )
+
+            }
+          );
+
+        } catch (error) {
+
+          console.error(
+            "Could not submit order:",
+            error
+          );
+
+        }
+
+      }
+
+
+      document
+        .getElementById(
+          "paynowOrderId"
+        )
+        .textContent =
+        orderId;
+
+
+      document
+        .getElementById(
+          "paynowAmount"
+        )
+        .textContent =
+        total.toFixed(2);
+
+
+      document
+        .getElementById(
+          "paynow"
+        )
+        .classList.add("show");
+
+
+      document
+        .getElementById(
+          "paynow"
+        )
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    /*
+      ============================================================
+      CUSTOMER SAYS THEY PAID
+      ============================================================
+    */
+
+    function markCustomerPaid() {
+
+      if (!currentOrder) return;
+
+
+      /*
+        IMPORTANT:
+
+        This does NOT set payment to PAID.
+
+        It only tells the spreadsheet that
+        the customer says they have paid.
+
+        You verify the actual payment manually.
+      */
+
+
+      currentOrder.customerMarkedPaid =
+        true;
+
+
+      if (
+        GOOGLE_SCRIPT_URL &&
+        !GOOGLE_SCRIPT_URL.includes(
+          "YOUR_GOOGLE"
+        )
+      ) {
+
+        fetch(
+          GOOGLE_SCRIPT_URL,
+          {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify({
+
+                action:
+                  "customerMarkedPaid",
+
+                orderId:
+                  currentOrder.orderId
+
+              })
+
+          }
+        );
+
+      }
+
+
+      showConfirmation();
+
+    }
+
+
+    /*
+      ============================================================
+      CONFIRMATION
+      ============================================================
+    */
+
+    function showConfirmation() {
+
+      const card =
+        document.getElementById(
+          "confirmationCard"
+        );
+
+
+      card.innerHTML = `
+
+        <div>
+          <strong>Order:</strong>
+          ${escapeHtml(
+            currentOrder.orderId
+          )}
+        </div>
+
+        <div>
+          <strong>Name:</strong>
+          ${escapeHtml(
+            currentOrder.customerName
+          )}
+        </div>
+
+        <div>
+          <strong>Total:</strong>
+          $${currentOrder.total.toFixed(2)}
+        </div>
+
+        <div>
+          <strong>Collection:</strong>
+          ${escapeHtml(
+            formatFriendlyDate(
+              new Date(
+                currentOrder.collectionDate +
+                "T12:00:00"
+              )
+            )
+          )}
+        </div>
+
+        <div>
+          <strong>Time:</strong>
+          ${escapeHtml(
+            currentOrder.collectionTime
+          )}
+        </div>
+
+      `;
+
+
+      document
+        .getElementById(
+          "paynow"
+        )
+        .classList.remove("show");
+
+
+      document
+        .getElementById(
+          "checkout"
+        )
+        .classList.remove("show");
+
+
+      document
+        .getElementById(
+          "cartSummary"
+        )
+        .classList.add("hidden");
+
+
+      document
+        .getElementById(
+          "cartItems"
+        )
+        .innerHTML = "";
+
+
+      document
+        .getElementById(
+          "confirmation"
+        )
+        .classList.add("show");
+
+
+      cart = [];
+
+      renderCart();
+
+    }
+
+
+    /*
+      ============================================================
+      HELPERS
+      ============================================================
+    */
+
+    function generateOrderId() {
+
+      const random =
+        Math.floor(
+          1000 +
+          Math.random() * 9000
+        );
+
+      return `B28-${random}`;
+
+    }
+
+
+    function formatDateForInput(date) {
+
+      const year =
+        date.getFullYear();
+
+      const month =
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0");
+
+      const day =
+        String(
+          date.getDate()
+        ).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+
+    }
+
+
+    function formatFriendlyDate(date) {
+
+      return date.toLocaleDateString(
+        "en-SG",
+        {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }
+      );
+
+    }
+
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      toast.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      setTimeout(() => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      }, 2500);
+
+    }
+
+  </script>
+
+</body>
+</html>
