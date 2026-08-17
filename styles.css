@@ -1156,6 +1156,15 @@ footer p {
    SCREENSHOT-STYLE BRANDING
 ========================= */
 .logo-panda { width: 48px; height: 48px; }
+
+.logo-panda img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
 .logo-panda svg { width: 100%; height: 100%; display:block; }
 .exact-panda-logo { width:100%; height:100%; display:block; object-fit:contain; }
 .logo-text { font-size: 1.75rem; letter-spacing: .02em; }
